@@ -49,15 +49,15 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'guide template'
-copyright = u'2019, Open Microscopy Environment'
+project = u'Key-Value pairs scripts'
+copyright = u'2023, Open Microscopy Environment'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0.1.0'
+version = '1.0.0'
 # The full version, including alpha/beta/rc tags.
 release = version
 
