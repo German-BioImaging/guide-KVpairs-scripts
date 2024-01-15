@@ -1,13 +1,13 @@
 Walkthrough
 ===========
 
-The aim of the four Key-Value pairs scripts is to provide a way to edit by \
-batch the Key-Value pairs annotations:
+The aim of the four Key-Value pair scripts is to provide a way to edit \
+Key-Value pairs (MapAnnotations) and Tags (TagAnnotations) by batch:
 
-* Import Key-Value pairs annotations from a .csv file
-* Export Key-Value pairs annoatations to a .csv file
-* Delete Key-Value pairs annotations
-* Convert the namespaces of Key-Value pairs annotations
+* Import Key-Value pairs and Tags as Annotations from a .csv file
+* Export Key-Value pairs to a .csv file
+* Delete Key-Value pairs
+* Convert the namespaces of Key-Value pairs
 
 Following this walkthrough, we hope to give you an understanding of each \
 functionality, including the fourth one on namespaces, likely unclear \
@@ -66,27 +66,31 @@ error in the case of tags.
 Exporting Key-Value pairs
 -------------------------
 
-We will start the script to export Key-Value pairs. Though there are no\
-annotations yet (and we are not expecting you to have annotations either \
-for this tutorial), this will generate a .csv file with the list of object \
-names and IDs (that we can fill with columns of data later).
+Exporting Key-Value pairs will result in a .csv file with the same structure \
+you would expect when importing from a .csv file.
+As such one can re-create the original file if it is lost or has to be adapted.
 
-Selecting the objects we want to process (we take here the previous example\
-of tag selection), let's go ahead and execute the script (leaving the other \
-parameters as defaults for now).
+Additionally, it can be used to generate a .csv file with a list of object \
+names and IDs that we can fill with columns of annotation data later.
 
-.. image:: images/4_export_output.png
+.. figure:: images/4_export_output.png
    :scale: 100%
 
-As we had no annotations yet, we obtain only the dataset name and id as \
-expected. Would we had Key-Value pairs attached to the dataset, \
-they would have been exported here (given that we would specify the right \
-namespace).\
+   *Exported .csv with only ID and object name*
+..
 
   Tip: If you have Key-Value pairs attached to your objects that you do not \
   wish to export (to create a template like shown above), specify a namespace \
   that is not in use by any of the objects (try the frantically typed \
   sequence "lkdsjfvjpsodfp2")
+
+.. figure:: images/5_export_output_2.png
+   :scale: 100%
+
+   *Exported .csv with some test Key-Value pairs*
+..
+
+
 
 Importing Key-Value pairs
 -------------------------
@@ -116,6 +120,12 @@ A few explanation on the parameters we chose here:
   correspond to datasets).
 * File annotation: The .csv file was picked from the local computer via the
   "Choose file" menu (ID of attached file on OMERO could be picked instead).
+* Target ID/name colname: These refer to the column names for the columns \
+  of either the ID or name of the target objects in the .csv. You can refer to the \
+  target objects with both, although names might not be unique.
+  In our example the .csv already has the default values the script proposes.
+  
+  
 
 We can see in the OMERO activities that the Key-Value pairs were added to 5 \
 datasets out of the 11 present in this project (as expected). One of them \

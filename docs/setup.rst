@@ -23,7 +23,7 @@ them to annotate all the common object type in OMERO.web:
 * Plate
 * Screen
 
-Check that the version of the currently installed scripts are of 2.0.0TODO and higher.
+Check that the version of the currently installed scripts are of 2.0.0 and higher.
 
 If not, you can find the scripts \
 `here <https://github.com/German-BioImaging/guide-KVpairs-scripts>`_ and \
