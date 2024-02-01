@@ -11,8 +11,10 @@ Contents:
 .. toctree::
    setup
    gettingstarted
+   allparameters
    indepth
-   :maxdepth: 1
+   errors
+   :maxdepth: 2
 
 Contribute
 ----------
