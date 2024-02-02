@@ -1,3 +1,4 @@
+====================
 Extended description
 ====================
 
@@ -80,7 +81,6 @@ Annotating from multiple CSV
 ----------------------------
 
 
-
 Target ID, name and excluding column from Key-Value pairs
 ---------------------------------------------------------
 The defaults for the IDS and names of the objects to annotate are the same for \
@@ -103,14 +103,14 @@ pairs, by the use of the following three parameters:
 .. image:: images/expert_1_exclude_import.png
    :scale: 100%
 
-  * Target ID colname: the name of the column in the .csv that contains the
-    objects IDs
-  * Target name colname: the name of the column in the .csv that contains the
-    objects names
-  * Columns to exclude: <ID> will exclude the column containing the objects IDs,
-    <NAME> will do the same for the objects names, and additional columns can
-    be excluded by indicating their name (e.G. to exclude parent objects
-    column name when used with the export script).
+* Target ID colname: the name of the column in the .csv that contains the
+  objects IDs
+* Target name colname: the name of the column in the .csv that contains the
+  objects names
+* Columns to exclude: <ID> will exclude the column containing the objects IDs,
+  <NAME> will do the same for the objects names, and additional columns can
+  be excluded by indicating their name (e.G. to exclude parent objects
+  column name when used with the export script).
 
 
 Why the checkbox for delete script
@@ -125,7 +125,7 @@ about what is about to happen, and even more especially when you are the Owner \
 of an OMERO group (thus able to delete anyone's annotations). You have been \
 warned.
 
-Looking at the output Log
+Looking at the output log
 -------------------------
 When the execution of the script is over (also when it fails), you will \
 be able to look at the ouput of the script by clicking that button highlighed \
