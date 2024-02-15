@@ -11,7 +11,7 @@ you will be processing all the Wells of that Plate.
 One specificity though is about the Run/Acquisition. Runs and Wells are both \
 children objects of a Plate and can be selected in this way. \
 But selecting Images from a Run or all the Wells of a plate will produce different \
-results (in the case there is more than one Run):
+results (when there is more than one Run):
 
   * Selecting Images from a list of Wells will select all the images inside
     those Wells.
@@ -32,11 +32,11 @@ Features
    * Supports Tag Sets
    * Supports selection of Tags by Tag IDs
    * Creation of new Tags and Tag Sets
-   * Supports usage of only personal Tags
+   * Allows restriction to personal Tags only
 * Target selection by Tags
 
-Exclude empty values
-^^^^^^^^^^^^^^^^^^^^
+Exclude empty values from import
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If you utilise a .csv with empty values like
 
 .. csv-table::
@@ -47,16 +47,20 @@ If you utilise a .csv with empty values like
    "B.jpg", "121", "",""
    "C.jpg","122","","missing"
 
-by default a lot of "empty" Key-Value pairs like ``observation :`` would be created.
-This might be useful if you plan to fill it in manually later on. Most likely though, this will be useless visual clutter.
-To prevent this check the Advanced parameter "*Exclude empty values*", now a Key-Value pair will only created if there is anything in the Value field.
+by default, the empty cells are skipped during Key-Value pairs creation.
+If you wish to create a key for those empty cells, you can uncheck the box "*Exclude empty values*"
 
+This might be useful if you plan to fill it in manually later on. If you used an empty key value pair as a title \
+of a "key-value pair section", consider instead to assign a :ref:`namespace` to each of your key-value pair subset.
 
 Multiplicating Keys
 ^^^^^^^^^^^^^^^^^^^
-If you utilise the Advanced parameter "*Split value on*" you can specify one character for which multiple values get split.
-E.g. setting this to "!" in the following example, it would lead to the creation of two Key-Value pairs ``key_1 : value_1`` and ``key_1 : value_2`` for the Image *A.jpg*.
-Despite looking like a list of multiple values for Image *B.tif* it would generate one Key-Value pair ``key_1 : value_1, value_2`` as the comma is not recognized as a separator for multiple Key-Value pairs.
+If you utilise the Advanced parameter "*Split value on*" you can specify one character \
+for which multiple values get split. E.g. setting this to "!" in the following example, \
+it would lead to the creation of two Key-Value pairs ``key_1 : value_1`` and ``key_1 : value_2`` \
+for the Image *A.jpg*. Despite looking like a list of multiple values for Image *B.tif* it \
+would generate one Key-Value pair ``key_1 : value_1, value_2`` as the comma is not recognized \
+in our example as a separator for multiple Key-Value pairs.
 
 .. csv-table::
    :header: "name", "id", "key_1"
@@ -92,11 +96,18 @@ To do so just add a first row in the .csv with the first column containing "**na
 Tags
 ^^^^
 One can not only annotate with Key-Value pairs but also with Tags.
-To do this simply put "**tag**" where you would normally put the Key name. Multiple Tags can be specified as a comma separated list.
-If you want to select a Tag in a specific Tag-Set you just add the Tag-Set in square brackets directly following the Tag.
-You can also specify the Tag by its Tag-Id in square brackets directly following the Tag.
-By default the script will not create new Tags to avoid "Tag bloat", if you want new Tags created according to the .csv values you have to check the "**Create new Tags**" checkbox under "**Advanced parameters**".
-Furthermore, by default the script will search through all available Tags of the group, if you want to use only your own Tags you have to check the "**Use only personal Tags**" checkbox under "**Advanced parameters**".
+To do this simply put "**tag**" where you would normally put the Key name. Multiple \
+Tags can be specified as a comma separated list (if no separator is given in "Split value on", see :ref:`multiplicating keys`)
+
+If you want to select a Tag in a specific Tag-Set you just add the Tag-Set in square \
+brackets directly following the Tag. You can also specify the Tag by its Tag-Id in \
+square brackets directly following the Tag.
+By default the script will not create new Tags to avoid "Tag bloat", if you want new Tags created according \
+to the .csv values you have to check the "**Create new Tags**" checkbox under "**Advanced parameters**".
+
+Furthermore, by default the script will search through all available Tags of the group, \
+if you want to use only your own Tags you have to check the "**Use only personal Tags**" checkbox \
+under "**Advanced parameters**".
 
 .. csv-table::
    :header: "name", "id", "tag"
@@ -142,39 +153,6 @@ created inside OMERO.web. This namespace \
 differently by OMERO.web as it is the only one that can be edited in its \
 interface.
 
-Adding tags from .csv
----------------------
-Automatic tagging from the CSV import is also possible, but follows certain rules \
-that you should know about before trying it.
-
-Firstly, tags to assign must be placed inside a column with the name "TAG" \
-(case insensitive). Multiple tag column is allowed, but one can also add multiple tags \
-from the same cell. By default, tags are comma-separated ("tagA,tagB"), but this can work \
-only when the CSV separator is different from a comma. If the parameter 'Split value on' is \
-specified, this separator will be used instead (for the tags and the other cells).
-
-The behavior of the script is such that it search to reuse the existing tags of the group. \
-The search can be limited to the tags belonging to the user with the option 'Use only personal tags', \
-and non-existing tags can be generated only when the parameter 'Create new tags' is set. This aims \
-to prevent the creation of unwanted tags due to typos. We generally recommend that tags should be created \
-within OMERO.web first and then linked via the script, but the creation can be use to generate whole sets of \
-tags when needed.
-
-Tags can be identified in different ways. From a simple string like "tagA", any tag corresponding to \
-"tagA" is searched, within or outside of a tagset (always in the scope decided by the user with 'Use only \
-personal tags'). In case multiple tags called "tagA" are found, the script will prioritize the tags belonging to the user,
-and then the tags with the smallest IDs (that should be the oldest tags).
-
-Tags can be more precisely identified with the use of an ID specified within brackets, like "tagA[123]". Another possibility \
-is to specify the tagset of a tag like so: "tagA[tagsetXYZ]". In the later case, if the combinaison tag/tagset does not exist \
-and if creation of tags is allowed, the tag (and tagset) will be created and associated. Note here that tagset and tag ID are \
-distinguished only from the ID being a number (a tagset named "123" will never be recognized by the script).
-
-
-Annotating from multiple CSV
-----------------------------
-
-
 Target ID, name and excluding column from Key-Value pairs
 ---------------------------------------------------------
 The defaults for the IDS and names of the objects to annotate are the same for \
@@ -209,15 +187,9 @@ pairs, by the use of the following three parameters:
 
 Why the checkbox for delete script
 ----------------------------------
-If you are not afraid of batch deletion processes, well, you should be. \
-Because there is no undo button, deleting may result in a great loss of data. \
-Be sure to back up first the annotations by exporting it to a .csv (using the \
-exact same selection rule). \
-
-We hope that by forcing you to tick that box you will remember to think twice \
-about what is about to happen, and even more especially when you are the Owner \
-of an OMERO group (thus able to delete anyone's annotations). You have been \
-warned.
+There is no undo button, deleting may result in a loss of data. \
+If you are unsure, back up first the annotations by exporting it to a .csv (using the \
+same selection rule and specifying the same namespace).
 
 Looking at the output log
 -------------------------

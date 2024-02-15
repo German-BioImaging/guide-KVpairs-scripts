@@ -54,15 +54,11 @@ makes the key-value pairs editable in OMERO.web (the only namespace that allows 
 
 Multiple namespace can be provided as a comma separated list. Or all namespace can be selected using the * character.
 
-.. _Old Namespace:
-
 Old Namespace
 -------------
 For the namespace conversion script. List of old namespace (comma separated) to convert to a different namespace (unique). \
 This can be used to group key-value pairs into a single annotations (all found key-value pairs will be grouped to a single\
 key-value pair).
-
-.. _New Namespace:
 
 New Namespace
 -------------
@@ -77,8 +73,6 @@ set to 'guess' and will attempt to detect automatically the separator among ', ;
 
 For the key-value pair export script, the separator used in the generated CSV to separate elements. We \
 recommend the use of TAB.
-
-.. _Include parent container names:
 
 Include parent container names
 ------------------------------
@@ -103,8 +97,6 @@ Split values on
 For the key-value pair import script. The characters used to split the cells in the CSV into multiple entries. \
 The character used here must be different from the CSV separator character.
 
-.. _Columns to exclude:
-
 Columns to exclude
 ------------------
 For the key-value pair import script. If the columns specified here are found in the CSV, they will be ignored \
@@ -115,14 +107,10 @@ parameter `Target ID colname`_. <NAME> corresponds to the name of the column for
 parameter `Target name colname`_. <PARENT> corresponds to all possible parent containers type exported when using the \
 parameter `Include parent container names`_.
 
-.. _Target ID colname:
-
 Target ID colname
 -----------------
 For the key-value pair import script. The name of the column in the CSV containing the objects IDs. If not present, \
 the script will attempt to match the target objects by name. Defaults to OBJECT_ID as used by the export script.
-
-.. _Target name colname:
 
 Target name colname
 -------------------
