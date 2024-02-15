@@ -1,11 +1,12 @@
+====================
 Extended description
 ====================
 
 Selecting High-Content-Screening
 --------------------------------
-Selecting HCS data is not really special, and the logic is the same as for \
-Projects/Datasets/Images: Select a plate, ask for all Wells or Images inside it and \
-you will be processing all the Wells or Images of that Plate.
+Selecting HCS data follows the same selection logic as for \
+Projects/Datasets/Images: Select a plate, ask for all Wells inside it and \
+you will be processing all the Wells of that Plate.
 
 One specificity though is about the Run/Acquisition. Runs and Wells are both \
 children objects of a Plate and can be selected in this way. \
@@ -113,7 +114,14 @@ Furthermore, by default the script will search through all available Tags of the
 ..
 
 
+Choosing the CSV separator
+--------------------------
+When importing annotations from a .csv file, the script tries by default \
+to detect the CSV separator automatically (one of , ; TAB).
 
+It is possible to specify directly which one is used (in the case the automatic \
+detection fails for example). As the text in the annotations may contain \
+commas or semi-column, it is recommended to use TAB as separators.
 
 Columns of parent names
 -----------------------
@@ -121,9 +129,46 @@ A parameter of the export script is to include the name of the parent objects. \
 This serves as additional information when generating the object list, so that \
 the objects can be identified easily when adding columns of annotations while \
 updating the .csv in a spreadsheet editor.
-Those columns should subsequently be excluded from the Key-Value pairs, either \
-by dropping them out of the .csv, or by adding the name of those columns inside \
-the corresponding parameter of the import script.
+Those columns are by default excluded from the Key-value pairs using the import \
+script (<PARENT> value of the "Columns to exclude" parameter matches all parent \
+containers: PROJECT, DATASET, SCREEN, PLATE, WELL and RUN)
+
+Default Namespace
+-----------------
+Leaving the namespace parameter to blank always refers to the same namespace, \
+the "Client namespace", corresponding to the one given to new Key-Value pairs \
+created inside OMERO.web. This namespace \
+(``openmicroscopy.org/omero/client/mapAnnotation`` in full) is treated \
+differently by OMERO.web as it is the only one that can be edited in its \
+interface.
+
+Adding tags from .csv
+---------------------
+Automatic tagging from the CSV import is also possible, but follows certain rules \
+that you should know about before trying it.
+
+Firstly, tags to assign must be placed inside a column with the name "TAG" \
+(case insensitive). Multiple tag column is allowed, but one can also add multiple tags \
+from the same cell. By default, tags are comma-separated ("tagA,tagB"), but this can work \
+only when the CSV separator is different from a comma. If the parameter 'Split value on' is \
+specified, this separator will be used instead (for the tags and the other cells).
+
+The behavior of the script is such that it search to reuse the existing tags of the group. \
+The search can be limited to the tags belonging to the user with the option 'Use only personal tags', \
+and non-existing tags can be generated only when the parameter 'Create new tags' is set. This aims \
+to prevent the creation of unwanted tags due to typos. We generally recommend that tags should be created \
+within OMERO.web first and then linked via the script, but the creation can be use to generate whole sets of \
+tags when needed.
+
+Tags can be identified in different ways. From a simple string like "tagA", any tag corresponding to \
+"tagA" is searched, within or outside of a tagset (always in the scope decided by the user with 'Use only \
+personal tags'). In case multiple tags called "tagA" are found, the script will prioritize the tags belonging to the user,
+and then the tags with the smallest IDs (that should be the oldest tags).
+
+Tags can be more precisely identified with the use of an ID specified within brackets, like "tagA[123]". Another possibility \
+is to specify the tagset of a tag like so: "tagA[tagsetXYZ]". In the later case, if the combinaison tag/tagset does not exist \
+and if creation of tags is allowed, the tag (and tagset) will be created and associated. Note here that tagset and tag ID are \
+distinguished only from the ID being a number (a tagset named "123" will never be recognized by the script).
 
 
 Annotating from multiple CSV
@@ -152,14 +197,14 @@ pairs, by the use of the following three parameters:
 .. image:: images/expert_1_exclude_import.png
    :scale: 100%
 
-  * Target ID colname: the name of the column in the .csv that contains the
-    objects IDs
-  * Target name colname: the name of the column in the .csv that contains the
-    objects names
-  * Columns to exclude: <ID> will exclude the column containing the objects IDs,
-    <NAME> will do the same for the objects names, and additional columns can
-    be excluded by indicating their name (e.G. to exclude parent objects
-    column name when used with the export script).
+* Target ID colname: the name of the column in the .csv that contains the
+  objects IDs
+* Target name colname: the name of the column in the .csv that contains the
+  objects names
+* Columns to exclude: <ID> will exclude the column containing the objects IDs,
+  <NAME> will do the same for the objects names, and additional columns can
+  be excluded by indicating their name (e.G. to exclude parent objects
+  column name when used with the export script).
 
 
 Why the checkbox for delete script
@@ -174,7 +219,7 @@ about what is about to happen, and even more especially when you are the Owner \
 of an OMERO group (thus able to delete anyone's annotations). You have been \
 warned.
 
-Looking at the output Log
+Looking at the output log
 -------------------------
 When the execution of the script is over (also when it fails), you will \
 be able to look at the ouput of the script by clicking that button highlighed \
@@ -185,66 +230,3 @@ in red in the picture bellow.
 
 This output will help you understand what has been done/changed, and may help \
 you understand things when they don't work out the way you expected them.
-
-Assertion errors explained
---------------------------
-
-<Something> is not a valid target for <SomethingElse>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Objects are selected from a parent object TO a child object. Check out \
-this section for more explanations on how to select objects with \
-those scripts.
-
-No .csv FileAnnotation was found on <OBJ_TYPE>:<OBJ_ID>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When providing no file from the select File button, nor giving \
-a file annotation to read Key-Value pairs from, the script attempt to \
-search specifically for a .csv file attached to the current parent object.
-If none is found, you obtain this error. Try to provide a .csv file instead \
-of letting the script guessing.
-
-Failed to sniff CSV delimiter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It happens that the sniffer to detect fails to understand what separator was \
-used inside you .csv file. Please indicate in the parameter the separator used \
-inside your .csv.
-
-The provided annotation ID must reference a FileAnnotation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ID of the file annotation seems incorrect. Make sure that you gave the \
-FileAnnotation ID and not the LinkAnnotation ID, as indicated in the image bellow.
-
-.. image:: images/expert_3_file_annotation_id.png
-   :scale: 100%
-
-Neither the column for the objects name or the objects index were found
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Make sure that the column in your .csv match the columns given as parameter \
-of the import script. Both are optional, but at least one is required!
-
-Target objects identified by name have duplicate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Because no column specifying the ID of the object to annotate was found, \
-the script attempted to uniquely identify the objects by their name. It seemed \
-however that in the list of all objects founds from the parent you gave, \
-multiple objects have the same name. Please try again by adding a column \
-with the IDs of the objects to annoate. (OBJECT_ID is the default of the \
-scripts).
-
-File annotation ID must be given when using Tag as source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Because files cannot be attached to tags, and thus cannot be searched \
-automatically when providing tags as source, you must provide a file as \
-input to the script.
-
-Number of Source IDs and FileAnnotation IDs must match
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When providing more than one parent object, the Key-Value pairs can \
-be read from either a single .csv file, or by multiple files. In the later \
-scenario, there must be an identical number of FileAnnotation and parent \
-objects, in order for the script to understand which corresponds to which.
-
-Please confirm that you understood the risks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It seems that you forgot to confirm that you understood the risk associated \
-with a batch deletion of annotations. TODO cf to section on why ticking the box.
