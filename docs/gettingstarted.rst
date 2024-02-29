@@ -38,13 +38,13 @@ object type and IDs:
    *Selection of multiple datasets and the auto-filled Export to CSV script.*
 ..
 
-For the direct selection, leave the Target Data Type as **<on current>** \
+For the direct selection, leave the Target Data Type as "*<on current>*" \
 (in this example, choosing **Dataset** would also work).
 
 Children selection
 ^^^^^^^^^^^^^^^^^^
 Instead of selecting the objects one by one, we can select the parent object \
-and set the **Target Data Type** to the type of the children objects \
+and set the "*Target Data Type*" to the type of the children objects \
 we want to select.
 
 .. figure:: images/2_selecting_parentchild_autofill.png
@@ -67,7 +67,7 @@ which objects to process.
 ..
 
 The selection works in the same way as for the children selection. Note \
-that choosing **<on current>** for **Target Data Type** will result in an \
+that choosing "*<on current>*" for "*Target Data Type*" will result in an \
 error in this case.
 
 Exporting Key-Value pairs
@@ -76,14 +76,14 @@ Exporting Key-Value pairs
 Exporting Key-Value pairs will generate a .csv file with the header names \
 expected by the import .csv script. This has two use:
 
-* export existing key-value pairs (along other things like namespace or tags). \
-  This can be useful to modify them before re-import, or to transfer annotations \
-  accross groups.
+* export existing key-value pairs (along other things like namespace or tags).
+  This can be useful to modify them before re-import, or to transfer annotations
+  across groups.
 * export a list of objects with their name and ID.
 
 .. figure:: images/4_export_output.png
 
-   *Exported .csv with only ID and object name*
+   *Exported .csv with only the object ID and name*
 ..
 
   Tip: If you have Key-Value pairs attached to your objects that you do not \
@@ -104,31 +104,21 @@ we proceed to edit it within a spreadsheet editor, adding more columns to the cs
 
 We added several columns to annotate our dataset with Key-Value pairs \
 following the `REMBI <https://doi.org/10.1038/s41592-021-01166-8>`_ guidelines \
-(after saving the document, our ``;`` separator became ``,``).
+(after saving the document, our ``TAB`` separator became ``,``).
 
-We proceed and start the script **Import Key-Value from .csv**.
+We proceed and start the script "*Import Key-Value from .csv*".
 
 .. figure:: images/6_script_import.png
 
    *Selection of all the datasets of a project and the Import from CSV script.*
 ..
 
-A few explanation on some of parameters we chose here:
-
-* Data Type & ID: We selected the project containing all of our datasets.
-  Only the datasets having their ID in the .csv file will be annotated with
-  Key-Value pairs.
-* Target data type: We want to annotate dataset (the name and ID inside the .csv
-  correspond to datasets).
-* File annotation: The .csv file was picked from the local computer via the
-  **Choose file** menu (ID of attached file on OMERO could be picked instead).
-* All other parameters can help you fine tune the way to import annotations. More \
-  on that in the :doc:`advanced section</indepth>` of this guide.
+There are many parameters here that could help you fine tune the way to import annotations. More \
+  on that in the :doc:`parameter description section</allparameters>` of this guide.
 
 
-We can see in the OMERO activities that the Key-Value pairs were added to 5 \
-datasets out of the 11 present in this project (as expected). One of them \
-is shown bellow as an example.
+We can then see in the OMERO activities that the Key-Value pairs were added to 5 \
+datasets out of the 11 present in this project (as expected).
 
 .. figure:: images/7_KV_import_printout.png
 
@@ -147,7 +137,7 @@ namespace).
    In fact, if you created Key-Value pairs in OMERO.web, you have used \
    namespaces without noticing it: OMERO assigns by default the \
    "client namespace" (``openmicroscopy.org/omero/client/mapAnnotation`` in full)\
-   , and allows one to edit in OMERO.web annotations in that namespace.
+   , a special namespace recognized by OMERO.web allowing to edit them.
 
 Let's go ahead and change that default client namespace to something else, \
 that will assign a category to our Key-Value pairs (and make the Key-Value \
@@ -170,7 +160,7 @@ And here is our five Key-Value pairs annotations with converted namespace:
 Deleting Key-Value pairs
 ------------------------
 
-To finish, we will show how to delete annotations. It seems that we were \
+Lastly, we will show how to delete annotations. It seems that we were \
 a bit too fast making the last set of annotations, and some Key-Value \
 pairs aren't right.
 

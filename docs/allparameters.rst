@@ -4,45 +4,42 @@ Parameter description
 
 Data Type
 ---------
-In combinaison with the parameter 'IDs', this selects the object \
+In combinaison with the parameter "*IDs*", this selects the object \
 from which targets are selected (targets of the given type).
 
-For example, if Data Type is set to Project, and ID to 789, it will select all attached Datasets \
-if 'Target Data Type' is set to Dataset, or all the Images if it is set to Image.
+For example, if "*Data Type*" is set to **Project**, and "*ID*" to 789, it will select the **Datasets** \
+inside if "*Target Data Type*"" is set to **Dataset**.
 
-The Data Type can also be set to Tag, in which case the tagged objects of the "Target Data Type" \
+The "*Data Type*" can also be set to **Tag**, in which case the tagged objects of the "*Target Data Type*" \
 are selected. This can be used for a more flexible selection of target object to process.
 
 IDs
 ---
-IDs of the object for the 'Data Type' selection.
+IDs of the object for the "*Data Type*" selection.
 
-Multiple ID can be provided at the same time, separated with a comma. In this case, \
-the objects are processed sequentially.
+Multiple ID separated with a comma can be provided at the same time. In this case, \
+the objects are processed sequentially (if the script fails at the 3rd object, the 1st and 2nd \
+will already be processed).
 
 Target Data Type
 ----------------
-The data type to be selected for processing by the script. Default to "<on current>" means that the \
-objects specified by "Data Type" and "IDs" are the ones to be processed. In the other case, the selected \
-type must correspond to a child object of the selected type (Image are child of Dataset and Project, \
+The data type to be selected for processing by the script. Default to "*<on current>*" means that the \
+objects specified by "*Data Type*" and "*IDs*" are the ones to be processed. Otherwise, "*Target Data Type*" \
+must correspond to a child object of the selected type (Image are child of Dataset and Project, \
 Well are child of Screen and Plate, ...).
 
 
 File Annotation
 ---------------
-Parameter for the import of Key-Value pairs from a CSV file. Provided from the "Choose File" selection menu, \
+Parameter for the import of Key-Value pairs from a CSV file. Provided from the "*Choose File*" selection menu, \
 the file will be temporarily uploaded to OMERO for the duration of the script.
 
-The items listed in the CSV are matched to the Target object found. If an item of the CSV correspond to no \
-target object, the item is skipped. As such, target objects coming from different parent objects can be \
-annotated from a single CSV.
+The items listed in the CSV are matched to the found target objects. If an item of the CSV correspond to no \
+target object, the item is skipped (as such, target objects coming from different parent objects can be \
+annotated from a single CSV).
 
-The matching of items in the CSV to target objects is done either via IDs or names (IDs have priority over names). \
-The name of the columns containing either can be specified (see 'Target ID colname' and 'Target name colname'), but \
-are by default respectively in upper case OBJECT_ID and OBJECT_NAME.
-
-If no ID column is given in the CSV, the script attempts to match the items via the name. In this case, name duplicates \
-are forbidden. (either from the CSV or inside OMERO, this will lead the script to fail).
+The matching of items in the CSV to target objects is done either via IDs or names (IDs have priority over names, \
+see "*Target ID colname*"" and "*Target name colname*"").
 
 Namespace
 ---------

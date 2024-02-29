@@ -58,8 +58,8 @@ objects, in order for the script to understand which corresponds to which.
 
 Please confirm that you understood the risks
 --------------------------------------------
-It seems that you forgot to confirm that you understood the risk associated \
-with a batch deletion of annotations. :ref:`Reason here <why the checkbox for delete script>`
+It seems that you went a bit too fast and forgot to confirm that you understood \
+the risk associated with a batch deletion of annotations.
 
 Target objects identified by name have duplicate
 ------------------------------------------------
