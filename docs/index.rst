@@ -14,7 +14,7 @@ Contents:
    allparameters
    indepth
    errors
-   :maxdepth: 2
+   :maxdepth: 1
 
 Contribute
 ----------
