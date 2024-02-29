@@ -21,3 +21,6 @@ python:
   version: 3.7
   install:
     - requirements: requirements.txt
+
+build:
+  os: ubuntu-22.04
