@@ -18,7 +18,7 @@ children objects of a **Plate**, and **Images** are attached to both a **Run** a
 
 
 Features of KeyVal_from_csv
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 * Generation of Key-Value pairs
 * Automatic Generation of multiple Key-Value pairs with the same Key if multiple Values are separated by a defined character
 * Assignement of namespaces from the csv file (or one for all Key-Value pairs from the script parameter).
