@@ -41,15 +41,22 @@ annotated from a single CSV).
 The matching of items in the CSV to target objects is done either via IDs or names (IDs have priority over names, \
 see "*Target ID colname*"" and "*Target name colname*"").
 
+IDs of File Annotation already attached to the object can be used instead of "*Choose File*":
+
+.. image:: images/expert_3_file_annotation_id.png
+
 Namespace
 ---------
-For the import of key-value pair, the namespace that will be given to the created key-value pairs. For the three other scripts,
-limits the selection of key-value pairs to that namespace.
+In the case of key-value pairs import, the namespace assigned to the created key-value pairs.
 
-When no namespace is provided, matches the namespace 'openmicroscopy.org/omero/client/mapAnnotation', which \
+For the three other scripts, used to restrict the selection of key-value pairs to that namespace.
+
+When no namespace is provided, matches the namespace ``openmicroscopy.org/omero/client/mapAnnotation``, which \
 makes the key-value pairs editable in OMERO.web (the only namespace that allows that).
 
-Multiple namespace can be provided as a comma separated list. Or all namespace can be selected using the * character.
+Multiple namespace can be provided as a comma separated list.
+
+All namespace can be selected using the * character.
 
 Old Namespace
 -------------
@@ -60,8 +67,13 @@ key-value pair).
 New Namespace
 -------------
 For the namespace conversion script. The new namespace to assign to the key-value pairs found on the target \
-object having the `Old Namespace`_. The found key-value pairs will be grouped into a single key-value pair per object with \
-the 'New Namespace'.
+object having the "*Old Namespace*".
+
+Create new and merge
+--------------------
+For the namespace conversion script. When ticked, the script will create a single new annotation regrouping all the old \
+annotation it found, instead of only updating the namespace of each annotations. The same parameter can be given to \
+"*Old Namespace*" and "*New Namespace*" just to regroup the annotations.
 
 CSV separator
 -------------
@@ -73,31 +85,30 @@ recommend the use of TAB.
 
 Include parent container names
 ------------------------------
-For the key-value pair export script. Check the box if you want to include in the first columns of the CSV output \
-to contain for each objects the name of their parent containers.
+For the key-value pair export script. Check the box if you want to include in the CSV output \
+for each objects the name of their parent containers.
 
 The possible parents are PROJECT, DATASET, SCREEN, PLATE, RUN, WELL, depending on which object type \
-is exported. These columns are ignored by default by the import script (see `Columns to exclude`_)
+is exported. These columns are ignored by default by the import script (see "*Columns to exclude*")
 
 Include namespace
 -----------------
 For the key-value pair export script. Check the box if you want to include in the CSV the namespace \
-associated to each key as the first row of the document. This is interpreted back by the import script.
+associated to each key as the first row of the document. (this output is understood by the import script).
 
 Include tags
 ------------
 For the key-value pair export script. Check the box if you want to include in the CSV a column for the tags \
-attached to the target objects. The tags are in the TAG[TAGSET] if the tags are part of a tagset.
+attached to the target objects. The tags are in the TAG[TAGSET] format if the tags are part of a tagset.
 
 Split values on
 ---------------
 For the key-value pair import script. The characters used to split the cells in the CSV into multiple entries. \
-The character used here must be different from the CSV separator character.
+The character used here must be different from the chosen CSV separator character.
 
 Columns to exclude
 ------------------
-For the key-value pair import script. If the columns specified here are found in the CSV, they will be ignored \
-for the generated key-value pairs.
+For the key-value pair import script. If the columns specified here are found in the CSV, they will be ignored by the script.
 
 Three default special values are given. <ID> corresponds to the name of the column for the object IDs specified by the \
 parameter `Target ID colname`_. <NAME> corresponds to the name of the column for the object IDs specified by the \
@@ -138,4 +149,4 @@ if you want to restrict the use of tags to tags owned by you.
 Allow tag creation
 ------------------
 For the key-value pair import script. When tags are specified in the CSV (under a column named TAG), check this box \
-if you want to allow the creation of tags when the don't exist. This also applies to tags for which a tagset is specified.
+if you want to allow the creation of tags when they don't exist. This also applies to tagsets.

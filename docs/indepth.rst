@@ -16,11 +16,9 @@ children objects of a **Plate**, and **Images** are attached to both a **Run** a
     **Run** (corresponds to a subset of **Images** from all combined **Well**).
   * Selecting **Images** from a **Screen** or a **Plate** will follow the **Well** route selecting all **Images** inside all **Wells**.
 
-KeyVal_from_csv
----------------
 
-Features
-^^^^^^^^
+Features of KeyVal_from_csv
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * Generation of Key-Value pairs
 * Automatic Generation of multiple Key-Value pairs with the same Key if multiple Values are separated by a defined character
 * Assignement of namespaces from the csv file (or one for all Key-Value pairs from the script parameter).
@@ -70,7 +68,7 @@ Be aware, that for the Image *C.jpg* two Key-Value pairs ``key_1 : value_1`` and
 
 Namespaces
 ^^^^^^^^^^
-The default namespace for OMERO Key-Value pairs generated in the web-interface and by our script is *openmicroscopy.org/omero/client/mapAnnotation*.
+The default namespace for OMERO Key-Value pairs generated in the web-interface and by our script is ``openmicroscopy.org/omero/client/mapAnnotation``.
 Only Key-Value pairs with this namespace can be edited in the web-interface later!
 
 Leaving the "*Namespace*" parameter blank will assign the default namespace to the new key-value pairs created, or \
