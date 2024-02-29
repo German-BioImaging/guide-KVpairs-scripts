@@ -21,7 +21,7 @@ The object selection is the same for the four scripts. In OMERO there are \
 two distinct hierarchies, one for high content screening, and a regular one:
 
 * Projects -> Datasets -> Images
-* Screens -> Plates -> Wells OR Acquisition/Run -> Images
+* Screens -> Plates -> (Wells or Acquisition/Run) -> Images
 
 More details about selecting High-Content-Screening are described in another \
 section (:ref:`Selecting HCS <selecting high-content-screening>`).
@@ -35,7 +35,6 @@ after selecting the object will prefill the script parameters with the right \
 object type and IDs:
 
 .. image:: images/1_selecting_all_autofill.png
-   :scale: 100%
 
 For the direct selection, leave the Target Data Type as **<on current>** \
 (in this example, choosing "Dataset" would also work).
