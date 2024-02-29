@@ -173,7 +173,6 @@ Note also that those two columns are excluded by defaults from the Key-Value \
 pairs, by the use of the following three parameters:
 
 .. image:: images/expert_1_exclude_import.png
-   :scale: 100%
 
 * Target ID colname: the name of the column in the .csv that contains the
   objects IDs
@@ -198,7 +197,6 @@ be able to look at the ouput of the script by clicking that button highlighed \
 in red in the picture bellow.
 
 .. image:: images/expert_2_script_output.png
-   :scale: 100%
 
 This output will help you understand what has been done/changed, and may help \
 you understand things when they don't work out the way you expected them.

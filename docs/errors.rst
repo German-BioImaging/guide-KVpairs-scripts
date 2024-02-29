@@ -75,7 +75,6 @@ The ID of the file annotation seems incorrect. Make sure that you gave the \
 FileAnnotation ID and not the LinkAnnotation ID, as indicated in the image bellow.
 
 .. image:: images/expert_3_file_annotation_id.png
-   :scale: 100%
 
 The tag ID:{TAG_ID} is not in the permitted selection of tags
 -------------------------------------------------------------
