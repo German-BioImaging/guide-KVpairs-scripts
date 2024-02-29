@@ -2,10 +2,12 @@
 Extended description
 ====================
 
+.. _select-HCS:
+
 Selecting High-Content-Screening
 --------------------------------
 Selecting HCS data follows the same selection logic as for \
-Projects/Datasets/Images: Select a plate, ask for all Wells inside it and \
+Projects/Datasets/Images: Select a Plate, ask for all Wells inside it and \
 you will be processing all the Wells of that Plate.
 
 One specificity though is about the Run/Acquisition. Runs and Wells are both \
@@ -13,11 +15,11 @@ children objects of a Plate and can be selected in this way. \
 But selecting Images from a Run or all the Wells of a plate will produce different \
 results (when there is more than one Run):
 
-  * Selecting Images from a list of Wells will select all the images inside
-    those Wells.
-  * Selecting Images from a Run will select all the images coming from that
-    Run (would correspond to a subset of Images from each Well).
-  * Selecting Images from a Screen or a Plate will follow the Well route selecting all Images inside all Wells.
+  * Selecting **Images** from a list of **Wells** will select all the **Images** inside
+    those **Wells**.
+  * Selecting **Images** from a **Run** will select all the **Images** coming from that
+    **Run** (would correspond to a subset of **Images** from each **Well**).
+  * Selecting **Images** from a **Screen** or a **Plate** will follow the **Well** route selecting all **Images** inside all **Wells**.
 
 KeyVal_from_csv
 ---------------
