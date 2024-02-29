@@ -44,3 +44,13 @@ This will allow the script to return a link for the created .csv for a direct \
 downloading. If not configured, the .csv can be found as an attachment of the \
 first parent object passed in parameter of the export script (the file is \
 attached regardless of whether the URL is set or not).
+
+This can be done with the `OMERO CLI <https://omero.readthedocs.io/en/stable/users/cli/index.html>`_:
+
+.. code-block:: bash
+
+    > omero script list
+    (out)  ...
+           1234 | /omero/KV-pairs_scripts/KeyVal_to_csv.py
+           ...
+    > omero script edit 1234
