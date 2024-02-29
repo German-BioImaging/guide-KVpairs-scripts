@@ -24,7 +24,7 @@ two distinct hierarchies, one for high content screening, and a regular one:
 * **Screens** → **Plates** → (**Wells** or **Acquisition/Run**) → **Images**
 
 More details about selecting High-Content-Screening are described in another \
-section (`Selecting HCS <selectHCS>`_).
+section (:doc:`Selecting HCS </indepth#selecting-high-content-screening>`).
 
 To select objects to manipulate by batch, the scripts offer three distinct ways.
 
@@ -42,13 +42,13 @@ For the direct selection, leave the Target Data Type as **<on current>** \
 Children selection
 ^^^^^^^^^^^^^^^^^^
 Instead of selecting the objects one by one, we can select the parent object \
-and set the "Target Data Type" to the type of the children objects \
+and set the **Target Data Type** to the type of the children objects \
 we want to select.
 
 .. image:: images/2_selecting_parentchild_autofill.png
 
-In this example, we would select all the Images contained by the Datasets \
-of the Project:701.
+In this example, we would select all the **Images** contained by the **Datasets** \
+of the **Project:701**.
 
 Tag selection
 ^^^^^^^^^^^^^
@@ -102,7 +102,7 @@ following the `REMBI <https://doi.org/10.1038/s41592-021-01166-8>`_ guidelines \
 (after saving the document, it seems that our ``;`` separator was \
 replaced by ``,``).
 
-We proceed and start the script "Import Key-Value from .csv".
+We proceed and start the script **Import Key-Value from .csv**.
 
 .. image:: images/6_script_import.png
 
@@ -114,7 +114,7 @@ A few explanation on the parameters we chose here:
 * Target data type: We want to annotate dataset (the name and ID inside the .csv
   correspond to datasets).
 * File annotation: The .csv file was picked from the local computer via the
-  "Choose file" menu (ID of attached file on OMERO could be picked instead).
+  **Choose file** menu (ID of attached file on OMERO could be picked instead).
 * Target ID/name colname: These refer to the column names for the columns \
   of either the ID or name of the target objects in the .csv. You can refer to the \
   target objects with both, although names might not be unique.
