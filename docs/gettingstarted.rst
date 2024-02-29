@@ -24,7 +24,7 @@ two distinct hierarchies, one for high content screening, and a regular one:
 * **Screens** → **Plates** → (**Wells** or **Acquisition/Run**) → **Images**
 
 More details about selecting High-Content-Screening are described in another \
-section (`Selecting HCS <selecting high-content-screening>`_).
+section (`Selecting HCS <selectHCS>`_).
 
 To select objects to manipulate by batch, the scripts offer three distinct ways.
 
