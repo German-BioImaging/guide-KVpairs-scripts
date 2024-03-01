@@ -78,7 +78,7 @@ annotation it found, instead of only updating the namespace of each annotations.
 CSV separator
 -------------
 For the key-value pair import script, the separator used in the CSV to separate elements. By default \
-set to 'guess' and will attempt to detect automatically the separator among ', ; TAB'.
+set to 'guess' and will attempt to detect automatically the separator among ``,`` ``;`` ``TAB``.
 
 For the key-value pair export script, the separator used in the generated CSV to separate elements. We \
 recommend the use of TAB.

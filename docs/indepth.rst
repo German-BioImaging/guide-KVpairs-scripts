@@ -117,11 +117,11 @@ under "*Advanced parameters*".
 Choosing the CSV separator
 --------------------------
 When importing annotations from a .csv file, the script tries by default \
-to detect the CSV separator automatically (one of , ; TAB).
+to detect the CSV separator automatically (one of ``,`` ``;`` ``TAB``).
 
 It is possible to specify directly which one is used (in the case the automatic \
 detection fails for example). As the text in the annotations may contain \
-commas or semi-column, it is recommended to use TAB as separators.
+commas or semi-column, it is recommended to use ``TAB`` as separators.
 
 Columns of parent names
 -----------------------
