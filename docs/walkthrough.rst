@@ -23,7 +23,7 @@ two distinct hierarchies:
 * **Screens** → **Plates** → (**Wells** or **Acquisition/Run**) → **Images**
 
 More details about selecting High-Content-Screening are given in another \
-section (see :doc:`Selecting High-Content-Screening </indepth>`).
+section (see :doc:`Selecting High-Content-Screening </extended_description>`).
 
 To select which objects to manipulate by batch, the scripts offer three distinct ways.
 
@@ -115,7 +115,7 @@ We proceed and start the script "*Import Key-Value from .csv*".
 ..
 
 There are many parameters here that could help you fine tune the way to import annotations. More \
-  on that in the :doc:`parameter description section</allparameters>` of this guide.
+  on that in the :doc:`parameter description section</parameter_description>` of this guide.
 
 
 We can then see in the OMERO activities that the Key-Value pairs were added to 5 \
@@ -182,7 +182,7 @@ the "Run script" button.
 We can now edit the mistakes in the .csv file and reupload the Key-Value \
 pairs!.
 
-Make sure to check the :doc:`extended guide </indepth>` to learn about what else you can \
+Make sure to check the :doc:`extended guide </extended_description>` to learn about what else you can \
 do with those scripts.
 
 :Authors:
