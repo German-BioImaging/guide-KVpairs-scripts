@@ -95,11 +95,12 @@ Importing Key-Value pairs
 -------------------------
 
 Starting from the file we exported as explained in the previous section, \
-we proceed to edit it within a spreadsheet editor, adding more columns to the csv:
+we proceed to edit it within a spreadsheet editor, adding more columns to the csv, \
+including a row specifying the namespace to assign for each key:
 
 .. figure:: images/5_KV_to_import.png
 
-   *Result of populating the csv shown in a notepad*
+   *Result of populating the csv shown in a text editor*
 ..
 
 We added several columns to annotate our dataset with Key-Value pairs \
@@ -118,7 +119,8 @@ There are many parameters here that could help you fine tune the way to import a
 
 
 We can then see in the OMERO activities that the Key-Value pairs were added to 5 \
-datasets out of the 11 present in this project (as expected).
+datasets out of the 11 present in this project (as expected). We also see three set of \
+key-value pairs, one for each namespace we used in the csv.
 
 .. figure:: images/7_KV_import_printout.png
 
@@ -139,10 +141,9 @@ namespace).
    "client namespace" (``openmicroscopy.org/omero/client/mapAnnotation`` in full)\
    , a special namespace recognized by OMERO.web allowing to edit them.
 
-Let's go ahead and change that default client namespace to something else, \
-that will assign a category to our Key-Value pairs (and make the Key-Value \
-pairs non-editable in the webclient. Note: this does not prevent Key-Value
-pairs from being edited by other means).
+We would like to do a few changes in OMERO.web, and for that we would need to \
+change the namespace to the default OMERO.web namespace. We indicate the namespace we \
+want to edit and leave the second field empty (default namespace is then used).
 
 .. figure:: images/8_convert_namespace.png
 
@@ -160,18 +161,17 @@ And here is our five Key-Value pairs annotations with converted namespace:
 Deleting Key-Value pairs
 ------------------------
 
-Lastly, we will show how to delete annotations. It seems that we were \
-a bit too fast making the last set of annotations, and some Key-Value \
-pairs aren't right.
+It turns out that there are more than a few edits to do on our key-value pairs, and \
+converting back and forth the namespace seems too tedious this time. Let's instead export \
+what we have so far (we have done edits that we don't want to lose), delete "old" the key-value pairs, \
+and reimport when we are done fixing them.
 
-Before deleting them from OMERO, we make sure to have a local copy \
-that we can correct before reimport; Use the Export Key-Value pairs script (\
-providing the namespace of the Key-Value pairs to export).
+Using the same selection inputs for both scripts, we make sure that we have the key-value pairs on our \
+computer before deleting them. Because we want to export/delete multiple namespace at once, we can use the ``*`` \
+to include all namespace.
 
-We can now proceed to delete the Key-Value pairs. Selecting \
-the same parent object and the same namespace as we just did for the export, \
-we can tick the box to confirm that we understand that data will be deleted \
-**forever** from the server.
+Because there is no undo with the deletion of data from OMERO, think twice while checking the confirmation box and clicking \
+the "Run script" button.
 
 .. figure:: images/10_export_delete.png
 
@@ -180,7 +180,7 @@ we can tick the box to confirm that we understand that data will be deleted \
 ..
 
 We can now edit the mistakes in the .csv file and reupload the Key-Value \
-pairs (and why not, specifying the REMBI namespace directly !).
+pairs!.
 
 Make sure to check the :doc:`extended guide </indepth>` to learn about what else you can \
 do with those scripts.
@@ -188,4 +188,4 @@ do with those scripts.
 :Authors:
     Tom Boissonnet
 
-:Version: 1.0 of 2023/11/15
+:Version: 1.0 of 2024/03/01

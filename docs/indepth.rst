@@ -181,3 +181,9 @@ in red in the picture bellow.
 
 This output will help you understand what has been done/changed, and may help \
 you understand things when they don't work out the way you expected them.
+
+:Authors:
+    Tom Boissonnet
+    Jens Wendt
+
+:Version: 1.0 of 2024/03/01

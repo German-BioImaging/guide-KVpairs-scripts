@@ -150,3 +150,8 @@ Allow tag creation
 ------------------
 For the key-value pair import script. When tags are specified in the CSV (under a column named TAG), check this box \
 if you want to allow the creation of tags when they don't exist. This also applies to tagsets.
+
+:Authors:
+    Tom Boissonnet
+
+:Version: 1.0 of 2024/03/01

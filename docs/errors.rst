@@ -107,3 +107,8 @@ The .csv contains duplicates {DUPL} which makes it impossible to correctly alloc
 When no ID is used to identify the objects to annotate, names are use instead. In that case, there can not \
 be two object with the same name in the csv (and in the selected object on OMERO), in which case it is \
 impossible to identify which object should be annotated.
+
+:Authors:
+    Tom Boissonnet
+
+:Version: 1.0 of 2024/03/01
