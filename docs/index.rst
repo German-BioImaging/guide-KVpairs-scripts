@@ -10,11 +10,11 @@ Contents:
 
 .. toctree::
    setup
-   gettingstarted
-   allparameters
-   indepth
-   errors
-   :maxdepth: 2
+   walkthrough
+   parameter_description
+   extended_description
+   errors_explained
+   :maxdepth: 1
 
 Contribute
 ----------
