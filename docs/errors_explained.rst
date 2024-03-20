@@ -13,11 +13,6 @@ Annotation <XYZ> not found
 Try reloading the page. This error can happen when you try to use the script on an object of a \
 group after opening a second tab for a different group.
 
-Cannot split cells with a character used as CSV separator
----------------------------------------------------------
-Multiple values per cell can be used, but the character to split them must be \
-different from the separator used by the csv.
-
 CSV rows lenght mismatch: Header has <X> items, while line <line number> has <Y>
 --------------------------------------------------------------------------------
 This error shows either that one of the csv row has a different number of item from the header, or that \
